@@ -1,4 +1,10 @@
+import mistyPy
 from control import * 
+
+mia = mistyPy.Robot("10.5.11.234")
+
+reply = mia.populateImages()
+print("Reply from robot:", reply)  # Debugging line
 
 # Function to simulate Misty's gaze towards the participant
 def gaze_at_participant():
