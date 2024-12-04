@@ -3,25 +3,28 @@ import time
 import random
 
 # Connect to Misty
-# misty_ip = "Misty Ip here"
-# misty = Robot(misty_ip)
+misty_ip = "10.5.9.252"
+misty = Robot(misty_ip)
 
 ###################################################
 # Mock Robot class for testing without Misty
-class MockRobot:
-    def changeLED(self, red, green, blue):
-        print(f"Simulated LED color set to RGB({red}, {green}, {blue})")
+# class MockRobot:
+#     def changeLED(self, red, green, blue):
+#         print(f"Simulated LED color set to RGB({red}, {green}, {blue})")
 
-    def moveArm(self, arm, position, velocity):
-        print(f"Simulated moving {arm} arm to position {position} with velocity {velocity}")
+#     def moveArm(self, arm, position, velocity):
+#         print(f"Simulated moving {arm} arm to position {position} with velocity {velocity}")
     
-    def changeImage(self, image_name):
-        print(f"Simulated changing face to {image_name}")
+#     def moveArms(self, LeftArmPosition, RightArmPosition, LeftArmVelocity, RightArmVelocity):
+#         print(f"move both arms")
+    
+#     def changeImage(self, image_name):
+#         print(f"Simulated changing face to {image_name}")
 
-    def say(self, phrase):
-        print(f"Misty says: {phrase}")
+#     def say(self, phrase):
+#         print(f"Misty says: {phrase}")
 
-misty = MockRobot()
+# misty = MockRobot()
 #####################################################
 ##LED colors##
 ###################################################
@@ -35,39 +38,43 @@ def set_led_red():
     misty.changeLED(255, 0, 0)
     print("LED set to red")
 
+def set_led_blue():
+    misty.changeLED(0, 0, 255)
+    print("LED set to red")
+
 #####################################################
 #Move Arms# 
 #################################################
+
+
 # Function to raise the right arm
 def raise_right_arm():
-    misty.moveArm("right", 5, velocity=5)
+    misty.moveArm("right", -90, velocity=5)
     print("Raised right arm")
 
 # Function to lower the right arm
 def lower_right_arm():
-    misty.moveArm("right", 0, velocity=5)
+    misty.moveArm("right", 90, velocity=5)
     print("Lowered right arm")
 
 # Function to raise the left arm
 def raise_left_arm():
-    misty.moveArm("left", 5, velocity=5)
+    misty.moveArm("left", -90, velocity=5)
     print("Raised left arm")
 
 # Function to lower the left arm
 def lower_left_arm():
-    misty.moveArm("left", 0, velocity=5)
+    misty.moveArm("left", 90, velocity=5)
     print("Lowered left arm")
 
 # Function to raise both arms 
 def raise_both_arms():
-    misty.moveArm("left", 5, velocity=5)
-    misty.moveArm("right", 5, velocity=5)
+    misty.moveArms(-90, -90, 15, 15)
     print("Raised both arms")
 
 # Function to lower both arms 
 def lower_both_arms():
-    misty.moveArm("left", 0, velocity=5)
-    misty.moveArm("right", 0, velocity=5)
+    misty.moveArms(89, 89, 15, 15)
     print("Lowered both arms")
     
 ############################################
@@ -87,23 +94,28 @@ def set_frown():
 #Speech#
 ############################################
 def misty_speak(phrase):
-    misty.say(phrase)
+   misty.speak("Hello, world!")
 
 
 
 
 ######
 # Test Functions # 
-# print("\nTesting led light:")
+print("\nTesting led light:")
 # set_led_green()
-# set_led_red()
+
 # print("\nTesting arm movements:")
 # raise_right_arm()
+# time.sleep(5)
+# lower_right_arm()
+# time.sleep(5)
+# set_led_red()
 # raise_left_arm()
 # lower_right_arm()
 # lower_left_arm()
 # raise_both_arms()
 # lower_both_arms()
+
 # print("\nTesting facial expressions:")
 # set_smile()
 # set_frown()

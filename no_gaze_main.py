@@ -4,6 +4,10 @@ from control import *
 def no_gaze_at_participant():
     # Add code here to physically make Misty not gaze at the participant
     print("Simulated non-gaze at participant.")
+    pitch = 5    # Vertical movement (tilting the head up or down)
+    roll = 5     # Side tilt (rotating the head along the axis going through the nose)
+    yaw = 10     # Horizontal movement (turning the head left or right)
+    misty.moveHead(pitch=pitch, roll=roll, yaw=yaw)
 
 def run_experiment():
     num_trials = 2  # Number of trials
